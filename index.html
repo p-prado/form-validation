@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="vertical-center">
+        <div class="container">
+            <h2>Register</h2>
+            <form id="form-login">
+                <div class="input-row">
+                    <div class="input-set">
+                        <label for="username">Username</label>
+                        <span id="usernameErrorText" class="error-text">*Username not available</span>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                    <div class="input-set">
+                        <label for="email">Email</label>
+                        <span id="emailErrorText" class="error-text">*Invalid email.</span>
+                        <input type="email" name="email" id="email">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-set">
+                        <label for="password">Password</label>
+                        <span id="passwordErrorText" class="error-text">*Password must be stronger.</span>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div class="input-set">
+                        <label for="birthday">Date of Birth</label>
+                        <span id="birthdayErrorText" class="error-text">*DOB must be in the past.</span>
+                        <input type="date" name="birthday" id="birthday">
+                    </div>
+                </div>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
