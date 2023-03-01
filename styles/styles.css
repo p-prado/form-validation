@@ -96,6 +96,28 @@ input[type='submit']:hover {
     visibility: visible;
 }
 
+
+/* SECOND SCREEN STYLING */
+
+#back-button {
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: bold;
+    color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+#back-button:hover {
+    background-color: rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+
 @media only screen and (max-width: 480px) {
     .input-row{
         flex-direction: column;

@@ -10,5 +10,7 @@ contextBridge.exposeInMainWorld(
         verifyUser: (username) => ipcRenderer.send('verifyUser', username)
         ,
         validatedUserError: (result) => ipcRenderer.on('validatedUserError', result)
+        ,
+        backToStartScreen: () => ipcRenderer.send('backToStartScreen')
     }
 );

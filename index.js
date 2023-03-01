@@ -14,18 +14,20 @@ var expNum = RegExp("[0-9]");
 var expPassword = RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
 
 form.addEventListener('submit', function (event) {
-
+    event.preventDefault();
+    // Reset username control styles before making checks again.
     username.classList.remove("error");
     usernameErrorText.classList.remove("error-active");
-
-    event.preventDefault();
+    // Validate date and password
     let dateE = isDateError(birthday.value);
     let passwordE = isPasswordError(password.value);
     if (!dateE && !passwordE) {
+        // If both checks pass, validate username.
         checkUsernameAndLoad(username.value)
     }
 });
 
+// Function to validate Date
 function isDateError(input) {
     let today = new Date().getTime();
     let inputDate = new Date(input).getTime();
@@ -49,6 +51,7 @@ function isDateError(input) {
     }
 }
 
+// Function to validate Password
 function isPasswordError(input) {
     if (!input.match(expPassword)) {
         try {
@@ -69,6 +72,7 @@ function isPasswordError(input) {
     }
 }
 
+// Function to validate username and, if it validates, load the welcome screen.
 function checkUsernameAndLoad(input) {
     let userError;
     let returnResult;
