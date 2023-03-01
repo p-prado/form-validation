@@ -9,3 +9,5 @@ This form has JavaScript validation for the following:
 * Date of Birth - it must be in the past, not in the future.
 If these three verifications pass, the last verification is run prior to loading the Welcome page.
 * Username - it must not be in the `unavailableUsernames` array specified in the `main.js` file.
+### Communication Between Processes
+To communicate between the main and renderer processes, this program uses `ContextBridge` `.exposeInMainWorld`.
