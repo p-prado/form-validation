@@ -14,16 +14,15 @@ var expNum = RegExp("[0-9]");
 var expPassword = RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
 
 form.addEventListener('submit', function (event) {
+
+    username.classList.remove("error");
+    usernameErrorText.classList.remove("error-active");
+
     event.preventDefault();
     let dateE = isDateError(birthday.value);
     let passwordE = isPasswordError(password.value);
-    let usernameE = isUsernameError(username.value);
-    if (!dateE && !passwordE && !usernameE) {
-        try {
-            window.comunicacion.registroValido(username.value, birthday.value);
-        } catch (e) {
-            alert(e);
-        }
+    if (!dateE && !passwordE) {
+        checkUsernameAndLoad(username.value)
     }
 });
 
@@ -70,31 +69,28 @@ function isPasswordError(input) {
     }
 }
 
-function isUsernameError(input) {
+function checkUsernameAndLoad(input) {
     let userError;
+    let returnResult;
     window.comunicacion.verifyUser(input);
-    window.comunicacion.validatedUserError(function (event, result) {
-        alert(`#1. Is there any user error? ${result}`);
-        userError = result;
-    });
 
-    alert("#2. PASSED");
-    
-    if (userError) {
-        try {
-            username.classList.add("error");
-            usernameErrorText.classList.add("error-active");
-        } catch (e) {
-            // Error
+    window.comunicacion.validatedUserError(function (event, result) {
+        userError = result;
+        if (userError) {
+            try {
+                username.classList.add("error");
+                usernameErrorText.classList.add("error-active");
+            } catch (e) {
+                // Error
+            }
+        } else {
+            try {
+                username.classList.remove("error");
+                usernameErrorText.classList.remove("error-active");
+                window.comunicacion.registroValido(username.value, birthday.value);
+            } catch (e) {
+                // alert(e);
+            }
         }
-        return true;
-    } else {
-        try {
-            username.classList.remove("error");
-            usernameErrorText.classList.remove("error-active");
-        } catch (e) {
-            // 
-        }
-        return false;
-    }
+    });
 }

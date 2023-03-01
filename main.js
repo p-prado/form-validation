@@ -29,7 +29,6 @@ function createWindow2() {
 }
 
 ipcMain.on('registroValido', function(event, username, birthday){
-    console.log(`Username: ${username}; Birthday: ${birthday}`);
     createWindow2();
     ventana2.webContents.on('did-finish-load', function(){
         ventana2.webContents.send('inicioCorrecto', username, birthday);
@@ -38,11 +37,9 @@ ipcMain.on('registroValido', function(event, username, birthday){
 
 ipcMain.on('verifyUser', function(event, username){
     if (!unavailableUsers.includes(username)) {
-        console.log("DID NOT FIND USER");
         ventana.webContents.send('validatedUserError', false);
         // There is no error.
     } else {
-        console.log("FOUND USER");
         ventana.webContents.send('validatedUserError', true);
         // There is an error.
     }
